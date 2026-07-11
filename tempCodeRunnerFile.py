@@ -1,18 +1,27 @@
-valid_chars = "0123456789abcdefABCDEF" 
+print("=== Hash Identifier ===")
+print("1. Analyze Single Hash")
+print("2. Analyze Hashes From File")
 
-def analyze_hash(hash_value):
+valid_chars = "0123456789abcdefABCDEF"
+
+choice = input("\nChoose an option (1 or 2): ")
+
+if choice == "1":
+    hash_value = input("\nEnter hash: ")
+
     length = len(hash_value)
 
     is_valid = True
 
-    for letter in hash_value:
-        if letter not in valid_chars:
-            is_valid = False
+for letter in hash_value:
+    if letter not in valid_chars:
+        is_valid = False
 
-    if not is_valid:
-        print("Invalid hash")
-        return
-        
+if not is_valid:
+    print("Invalid hash")
+
+else:
+    length = len(hash_value)
     print("\n" + "=" * 40)
     print("         HASH ANALYSIS REPORT")
     print("=" * 40)
@@ -44,27 +53,8 @@ def analyze_hash(hash_value):
         print("Hash Type :SHA-512")
         print("Security : High(Currently secure)")
     
+    elif choice == "2":
+        print("Reading hashes from file...")
+
     else:
         print("Valid hexadecimal string, but unknown hash type.")
-
-print("=== Hash Identifier ===")
-print("1. Analyze Single Hash")
-print("2. Analyze Hashes From File")
-
-
-choice = input("\nChoose an option (1 or 2): ")
-
-if choice == "1":
-    hash_value = input("\nEnter hash: ")
-    analyze_hash(hash_value)
-
-elif choice == "2":
-    file=open("hashes.txt","r")
-
-    for line in file:
-        analyze_hash(line.strip())
-
-    file.close()
-
-else:
-    print("Invalid choice. please select either 1 or 2.")
