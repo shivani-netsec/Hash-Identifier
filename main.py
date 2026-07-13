@@ -37,13 +37,15 @@ def check_virustotal(hash_value):
     print("Undetected:", stats["undetected"])
 
     if stats["malicious"] > 0:
-       print("\nVerdict: MALICIOUS")
-       print("Detected by", stats["malicious"], "security vendors.")
-
+        verdict = "MALICIOUS"
+        print("\nVerdict: MALICIOUS")
+        print("Detected by", stats["malicious"], "security vendors.")
     else:
-       print("\nVerdict: CLEAN")
-       print("No antivirus vendor detected this hash.")
+        verdict = "CLEAN"
+        print("\nVerdict: CLEAN")
+        print("No antivirus vendor detected this hash.")
 
+    return stats, verdict
 
 def analyze_hash(hash_value):
     length = len(hash_value)
@@ -93,8 +95,17 @@ if choice == "1":
     hash_type=analyze_hash(hash_value)
 
     if hash_type != "Invalid":
-        check_virustotal(hash_value)
-   
+        stats, verdict = check_virustotal(hash_value)
+
+        report.write("Malicious : " + str(stats["malicious"]) + "\n")
+        report.write("Harmless  : " + str(stats["harmless"]) + "\n")
+        report.write("Suspicious: " + str(stats["suspicious"]) + "\n")
+        report.write("Undetected: " + str(stats["undetected"]) + "\n")
+        report.write("Verdict   : " + verdict + "\n\n")
+    else:
+        report.write("Status    : Invalid hash\n\n")
+
+    report.write("=" * 40 + "\n\n")
 
 elif choice == "2":
     try:
@@ -105,8 +116,23 @@ elif choice == "2":
             hash_value = line.strip()
             hash_type = analyze_hash(hash_value)
 
+            report.write("=" * 40 + "\n")
+            report.write("Hash: " + hash_value + "\n")
+            report.write("Type: " + hash_type + "\n")
+
             if hash_type != "Invalid":
-                check_virustotal(hash_value)
+                stats, verdict = check_virustotal(hash_value)
+
+                report.write("Malicious : " + str(stats["malicious"]) + "\n")
+                report.write("Harmless  : " + str(stats["harmless"]) + "\n")
+                report.write("Suspicious: " + str(stats["suspicious"]) + "\n")
+                report.write("Undetected: " + str(stats["undetected"]) + "\n")
+                report.write("Verdict   : " + verdict + "\n\n")
+
+            else:
+                report.write("Status    : Invalid hash\n\n")
+
+            report.write("=" * 40 + "\n\n")
 
         report.close()
         file.close()

@@ -1,0 +1,40 @@
+========================================
+Hash: 5d41402abc4b2a76b9719d911017c592
+Type: MD5
+Malicious : 0
+Harmless  : 0
+Suspicious: 0
+Undetected: 58
+Verdict   : CLEAN
+
+========================================
+
+========================================
+Hash: a9993e364706816aba3e25717850c26c9cd0d89d
+Type: SHA-1
+Malicious : 0
+Harmless  : 0
+Suspicious: 0
+Undetected: 61
+Verdict   : CLEAN
+
+========================================
+
+========================================
+Hash: 123xyz
+Type: Invalid
+Status    : Invalid hash
+
+========================================
+
+========================================
+Hash: 2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
+Type: SHA-256
+Malicious : 0
+Harmless  : 0
+Suspicious: 0
+Undetected: 58
+Verdict   : CLEAN
+
+========================================
+
