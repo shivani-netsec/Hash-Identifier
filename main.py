@@ -107,10 +107,13 @@ if choice == "1":
 
     report.write("=" * 40 + "\n\n")
 
+
 elif choice == "2":
     try:
         file = open("hashes.txt", "r")
         report = open("report.txt", "w")
+        csv_report = open("report.csv", "w")
+        csv_report.write("Hash,Type,Malicious,Harmless,Suspicious,Undetected,Verdict\n")
     
         for line in file:
             hash_value = line.strip()
@@ -129,13 +132,28 @@ elif choice == "2":
                 report.write("Undetected: " + str(stats["undetected"]) + "\n")
                 report.write("Verdict   : " + verdict + "\n\n")
 
+                csv_report.write(
+                hash_value + "," +
+                hash_type + "," +
+                str(stats["malicious"]) + "," +
+                str(stats["harmless"]) + "," +
+                str(stats["suspicious"]) + "," +
+                str(stats["undetected"]) + "," +
+                verdict + "\n"
+)
+
             else:
                 report.write("Status    : Invalid hash\n\n")
+                csv_report.write(
+                hash_value + ",Invalid,-,-,-,-,Invalid\n"
+)
 
             report.write("=" * 40 + "\n\n")
 
         report.close()
+        csv_report.close()
         file.close()
+        
 
     except FileNotFoundError:
         print("Error: hashes.txt not found.")

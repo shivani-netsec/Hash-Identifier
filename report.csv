@@ -1,0 +1,5 @@
+Hash,Type,Malicious,Harmless,Suspicious,Undetected,Verdict
+5d41402abc4b2a76b9719d911017c592,MD5,0,0,0,58,CLEAN
+a9993e364706816aba3e25717850c26c9cd0d89d,SHA-1,0,0,0,61,CLEAN
+123xyz,Invalid,-,-,-,-,Invalid
+2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824,SHA-256,0,0,0,58,CLEAN
