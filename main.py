@@ -1,6 +1,5 @@
-import requests
-from config import API_KEY
-from analyzer import analyze_hash, check_virustotal
+from analyzer import analyze_hash
+from virustotal import check_virustotal
 
 print("=== Hash Identifier ===")
 print("1. Analyze Single Hash")
