@@ -82,11 +82,9 @@ pip install -r requirements.txt
 
 This project requires a VirusTotal API key.
 
-Create a file named `config.py` and add the following:
+Create a file named .env in the project root:
 
-```python
-API_KEY = "YOUR_API_KEY"
-```
+VT_API_KEY=your_api_key_here
 
 A free API key can be obtained by creating an account on the VirusTotal website.
 
